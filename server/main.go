@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/core"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/initialize"
+	"github.com/gin-gonic/gin"
 	_ "go.uber.org/automaxprocs"
 	"go.uber.org/zap"
 )
@@ -12,6 +13,11 @@ import (
 //go:generate go env -w GOPROXY=https://goproxy.cn,direct
 //go:generate go mod tidy
 //go:generate go mod download
+
+//set GOOS=linux
+//set GOARCH=amd64
+//go build -o gva-linux
+// ./build.bat
 
 // 这部分 @Tag 设置用于排序, 需要排序的接口请按照下面的格式添加
 // swag init 对 @Tag 只会从入口文件解析, 默认 main.go
@@ -28,6 +34,15 @@ import (
 // @name                        x-token
 // @BasePath                    /
 func main() {
+	//var err error
+	// 启动 Redis 服务器
+	//err = myutil.CheckAndStartRedis()
+	//if err != nil {
+	//	fmt.Println(err)
+	//	return
+	//}
+	//gin.SetMode(gin.TestMode) //本地运行m
+	gin.SetMode(gin.DebugMode)   //服务器运行
 	global.GVA_VP = core.Viper() // 初始化Viper
 	initialize.OtherInit()
 	global.GVA_LOG = core.Zap() // 初始化zap日志库

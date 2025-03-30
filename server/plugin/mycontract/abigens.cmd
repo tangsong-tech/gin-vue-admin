@@ -1,0 +1,1 @@
+abigen --abi=gu.abi --pkg=mycontract --out=Gu.go

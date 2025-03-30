@@ -1,6 +1,7 @@
 package config
 
 type Server struct {
+	Web3      Web3    `mapstructure:"web3" json:"web3" yaml:"web3"`
 	JWT       JWT     `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
 	Zap       Zap     `mapstructure:"zap" json:"zap" yaml:"zap"`
 	Redis     Redis   `mapstructure:"redis" json:"redis" yaml:"redis"`

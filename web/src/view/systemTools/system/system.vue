@@ -934,6 +934,60 @@
             />
           </el-form-item>
         </el-tab-pane>
+        <el-tab-pane label="web3配置" name="13" class="mt-3.5">
+          <el-form-item label="rpc-url">
+            <el-input
+                v-model.trim="config.web3['rpc-url']"
+                placeholder="请输入rpc-url"
+            >
+              <template #append>
+                <el-button >生成</el-button>
+              </template>
+            </el-input>
+          </el-form-item>
+          <el-form-item label="api-key">
+            <el-input
+                v-model.trim="config.web3['api-key']"
+                placeholder="请输入api-key"
+            />
+          </el-form-item>
+          <el-form-item label="api-secret">
+            <el-input
+                v-model.trim="config.web3['api-secret']"
+                placeholder="请输入api-secret"
+            />
+          </el-form-item>
+          <el-form-item label="api-passphrase">
+            <el-input
+                v-model.trim="config.web3['bapi-passphrase']"
+                placeholder="请输入api-passphrase"
+            />
+          </el-form-item>
+          <el-form-item label="deposit">
+            <el-input
+                v-model.trim="config.web3['deposit']"
+                placeholder="请输入deposit"
+            />
+          </el-form-item>
+          <el-form-item label="withdraw">
+            <el-input
+                v-model.trim="config.web3['withdraw']"
+                placeholder="请输入withdraw"
+            />
+          </el-form-item>
+          <el-form-item label="ucontract">
+            <el-input
+                v-model.trim="config.web3['ucontract']"
+                placeholder="请输入ucontract"
+            />
+          </el-form-item>
+          <el-form-item label="tokencontract">
+            <el-input
+                v-model.trim="config.web3['tokencontract']"
+                placeholder="请输入tokencontract"
+            />
+          </el-form-item>
+        </el-tab-pane>
       </el-tabs>
     </el-form>
     <div class="mt-4">
@@ -961,6 +1015,7 @@
       'iplimit-count': 0,
       'iplimit-time': 0
     },
+    web3:{},
     jwt: {},
     mysql: {},
     mssql: {},

@@ -10,7 +10,12 @@
 <img src="https://img.shields.io/badge/element--plus-2.3.8-green"/>
 <img src="https://img.shields.io/badge/gorm-1.25.2-red"/>
 </div>
-
+【云服务器】请在安全组放行 30210 端口
+外网面板地址: https://203.86.235.27:30210/2244a86c
+内网面板地址: https://203.86.235.27:30210/2244a86c
+username: 6hm4askt
+password: 420c35c1
+[English](./README-en.md) | 简体中文
 <div align=center>
 <a href="https://trendshift.io/repositories/3250" target="_blank"><img src="https://trendshift.io/api/badge/repositories/3250" alt="Calcium-Ion%2Fnew-api | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </div>

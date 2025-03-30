@@ -250,7 +250,15 @@ hua-wei-obs:
     endpoint: you-endpoint
     access-key: you-access-key
     secret-key: you-secret-key
-
+web3:
+    rpc-url: https://bitter-smart-haze.bsc.quiknode.pro/4a63a040fc9f5cc7a7840a0c88c35680c50c7ea6/
+    api-key: ""
+    api-secret: ""
+    api-passphrase: ""
+    deposit: ""
+    withdraw: ""
+    ucontract: ""
+    tokencontract: ""
 # excel configuration
 excel:
     dir: ./resource/excel/
