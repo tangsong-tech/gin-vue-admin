@@ -1,39 +1,6 @@
 [
 	{
 		"inputs": [],
-		"name": "claimNodeRewards",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "cliBoxwith",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
-			}
-		],
-		"name": "cliUpdateUser",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
 	},
@@ -58,6 +25,80 @@
 		],
 		"name": "OwnableUnauthorizedAccount",
 		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "SafeERC20FailedOperation",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "string",
+				"name": "target",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "newAddress",
+				"type": "address"
+			}
+		],
+		"name": "AddressUpdated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "relatedAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct MengOperation.Record[]",
+				"name": "_arr",
+				"type": "tuple[]"
+			}
+		],
+		"name": "CliUpdate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "FundsDistributed",
+		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -88,34 +129,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address[]",
-				"name": "_addresss",
-				"type": "address[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "_amounts",
-				"type": "uint256[]"
-			},
-			{
-				"internalType": "uint8[]",
-				"name": "_prizeTypes",
-				"type": "uint8[]"
-			}
-		],
-		"name": "serveBoxset",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_num",
-				"type": "uint256"
-			},
-			{
 				"components": [
 					{
 						"internalType": "address",
@@ -128,56 +141,12 @@
 						"type": "uint256"
 					}
 				],
-				"internalType": "struct MengOpration.Record[]",
+				"internalType": "struct MengOperation.Record[]",
 				"name": "_arr",
 				"type": "tuple[]"
-			},
-			{
-				"internalType": "bool",
-				"name": "_isregister",
-				"type": "bool"
 			}
 		],
-		"name": "serverRigisterNew",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_technology",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_ecosystem",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_nodereward",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_boxreward",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_nodereceive",
-				"type": "address"
-			}
-		],
-		"name": "setAddress",
+		"name": "serverRegisterNew",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -185,50 +154,12 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_ratetechnology",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_rateecosystem",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_ratenodereward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_rateboxreward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_rateupdate",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "_tech",
+				"type": "address"
 			}
 		],
-		"name": "setRate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_amount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_nodeamount",
-				"type": "uint256"
-			}
-		],
-		"name": "setRigisternum",
+		"name": "setTechnology",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -250,84 +181,6 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_amount",
-				"type": "uint256"
-			}
-		],
-		"name": "severFromtowith",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_address",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_invite",
-				"type": "address"
-			}
-		],
-		"name": "severRigister",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint8",
-				"name": "actionType",
-				"type": "uint8"
-			}
-		],
-		"name": "TransferAndActionEvent",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
 				"name": "newOwner",
 				"type": "address"
 			}
@@ -338,60 +191,17 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "updateNode",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": true,
 				"internalType": "address",
-				"name": "_oldAddr",
+				"name": "user",
 				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_newAddr",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_invite",
-				"type": "address"
-			},
-			{
-				"internalType": "uint8",
-				"name": "_vip",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint8",
-				"name": "_node",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_nodereward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_boxreward",
-				"type": "uint256"
 			}
 		],
-		"name": "updateUserInfo",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		"name": "UserRegistered",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -407,13 +217,7 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "_to",
-				"type": "address"
-			}
-		],
+		"inputs": [],
 		"name": "withdrawBnb",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -470,166 +274,6 @@
 	},
 	{
 		"inputs": [],
-		"name": "boxreward",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "ecosystem",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getMyself",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "myaddr",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "inviter",
-						"type": "address"
-					},
-					{
-						"internalType": "address[]",
-						"name": "myson",
-						"type": "address[]"
-					},
-					{
-						"internalType": "uint8",
-						"name": "vip",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint8",
-						"name": "node",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint256",
-						"name": "nodereward",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "nodeinvite",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "boxreward",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "updatereward",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "invitereward",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "nodewithdraw",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "boxwithdraw",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct MengOpration.UserInfo",
-				"name": "",
-				"type": "tuple"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getNodeList",
-		"outputs": [
-			{
-				"internalType": "address[]",
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_user",
-				"type": "address"
-			}
-		],
-		"name": "getRecordsByAddress",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "relatedAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint8",
-						"name": "types",
-						"type": "uint8"
-					},
-					{
-						"internalType": "uint256",
-						"name": "timestamp",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "isWithdraw",
-						"type": "bool"
-					}
-				],
-				"internalType": "struct MengOpration.ComprehensiveRecord[]",
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "getUsers",
 		"outputs": [
 			{
@@ -643,200 +287,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "nodeamount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "nodeList",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "nodereceive",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "nodereward",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "rateboxreward",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "rateecosystem",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "ratenodereward",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "ratetechnology",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "rateupdate",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "recordMap",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "relatedAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint8",
-				"name": "types",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint256",
-				"name": "timestamp",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "isWithdraw",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "registernum",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "rootaddress",
 		"outputs": [
 			{
 				"internalType": "address",
@@ -862,7 +313,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "tokenContract",
+		"name": "TOKEN_CONTRACT",
 		"outputs": [
 			{
 				"internalType": "address",
@@ -887,68 +338,12 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "userInfoMap",
+		"inputs": [],
+		"name": "userCount",
 		"outputs": [
 			{
-				"internalType": "address",
-				"name": "myaddr",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "inviter",
-				"type": "address"
-			},
-			{
-				"internalType": "uint8",
-				"name": "vip",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint8",
-				"name": "node",
-				"type": "uint8"
-			},
-			{
 				"internalType": "uint256",
-				"name": "nodereward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "nodeinvite",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "boxreward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "updatereward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "invitereward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "nodewithdraw",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "boxwithdraw",
+				"name": "",
 				"type": "uint256"
 			}
 		],

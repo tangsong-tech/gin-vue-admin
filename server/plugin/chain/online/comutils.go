@@ -30,3 +30,7 @@ func DecimalToWei(dec *decimal.Decimal) *big.Int {
 
 	return weiBigInt
 }
+
+func USDTToWei(amount *decimal.Decimal) *big.Int {
+	return amount.Mul(decimal.New(1, 6)).BigInt() // 0.1 USDT = 100_000
+}

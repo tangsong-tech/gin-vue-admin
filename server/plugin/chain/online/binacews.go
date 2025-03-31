@@ -25,7 +25,7 @@ func KlineBn() {
 
 	wsKlineHandler := func(event *binance.WsKlineEvent) {
 		klineData <- event
-		//fmt.Println(<-klineData)
+		fmt.Println(<-klineData)
 	}
 	errHandler := func(err error) {
 		fmt.Println(err)

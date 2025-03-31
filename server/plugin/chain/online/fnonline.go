@@ -29,6 +29,21 @@ func BnbBalance(client *ethclient.Client, address string) (balance *decimal.Deci
 	return balance, nil
 }
 
+// 获取usdt 金额
+func Bnb20Balance(client *ethclient.Client, contract string, address string) (balance *decimal.Decimal, err error) {
+	//获取余额
+	instance, err := NewGoethereum(common.HexToAddress(contract), client)
+	if err != nil {
+		return nil, err
+	}
+	res, err := instance.BalanceOf(nil, common.HexToAddress(address))
+	if err != nil {
+		return nil, err
+	}
+	balance = WeiToDecimal(res)
+	return balance, nil
+}
+
 // 代币授权
 func Bsc20IncreaseAllowance(client *ethclient.Client, contract string, keystore *keystore.Key, spender string, amount *decimal.Decimal) error {
 	instance, err := NewGoethereum(common.HexToAddress(contract), client)
@@ -72,7 +87,8 @@ func GetApproval(client *ethclient.Client, from, spender string) error {
 	if err != nil {
 		return err
 	}
-	if WeiToDecimal(res).Cmp(decimal.NewFromInt(1000000)) > 0 {
+	fmt.Println("授权额度", WeiToDecimal(res))
+	if WeiToDecimal(res).Cmp(decimal.NewFromInt(1)) > 0 {
 		fmt.Println("已经认证成功", from)
 		return nil
 	}
