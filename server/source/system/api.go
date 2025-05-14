@@ -17,7 +17,7 @@ func init() {
 	system.RegisterInit(initOrderApi, &initApi{})
 }
 
-func (i initApi) InitializerName() string {
+func (i *initApi) InitializerName() string {
 	return sysModel.SysApi{}.TableName()
 }
 
@@ -117,6 +117,9 @@ func (i *initApi) InitializeData(ctx context.Context) (context.Context, error) {
 		{ApiGroup: "代码生成器", Method: "GET", Path: "/autoCode/getColumn", Description: "获取所选table的所有字段"},
 		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/installPlugin", Description: "安装插件"},
 		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/pubPlug", Description: "打包插件"},
+		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcp", Description: "自动生成 MCP Tool 模板"},
+		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcpTest", Description: "MCP Tool 测试"},
+		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcpList", Description: "获取 MCP ToolList"},
 
 		{ApiGroup: "模板配置", Method: "POST", Path: "/autoCode/createPackage", Description: "配置模板"},
 		{ApiGroup: "模板配置", Method: "GET", Path: "/autoCode/getTemplates", Description: "获取模板文件"},
@@ -182,6 +185,9 @@ func (i *initApi) InitializeData(ctx context.Context) (context.Context, error) {
 		{ApiGroup: "参数管理", Method: "GET", Path: "/sysParams/findSysParams", Description: "根据ID获取参数"},
 		{ApiGroup: "参数管理", Method: "GET", Path: "/sysParams/getSysParamsList", Description: "获取参数列表"},
 		{ApiGroup: "参数管理", Method: "GET", Path: "/sysParams/getSysParam", Description: "获取参数列表"},
+		{ApiGroup: "媒体库分类", Method: "GET", Path: "/attachmentCategory/getCategoryList", Description: "分类列表"},
+		{ApiGroup: "媒体库分类", Method: "POST", Path: "/attachmentCategory/addCategory", Description: "添加/编辑分类"},
+		{ApiGroup: "媒体库分类", Method: "POST", Path: "/attachmentCategory/deleteCategory", Description: "删除分类"},
 	}
 	if err := db.Create(&entities).Error; err != nil {
 		return ctx, errors.Wrap(err, sysModel.SysApi{}.TableName()+"表数据初始化失败!")

@@ -72,7 +72,7 @@
           min-width="360"
           prop="component"
         />
-        <el-table-column align="left" fixed="right" label="操作" width="300">
+        <el-table-column align="left" fixed="right" label="操作" :min-width="appStore.operateMinWith">
           <template #default="scope">
             <el-button
               type="primary"
@@ -104,7 +104,7 @@
     </div>
     <el-drawer
       v-model="dialogFormVisible"
-      size="60%"
+      :size="appStore.drawerSize"
       :before-close="handleClose"
       :show-close="false"
     >
@@ -300,6 +300,34 @@
               </el-select>
             </el-form-item>
           </el-col>
+          <el-col :span="8">
+            <el-form-item>
+              <template #label>
+                <div>
+                  <span> 路由切换动画 </span>
+                  <el-tooltip
+                      content="如果设置了路由切换动画，在本路由下的动画优先级高于全局动画切换优先级。"
+                      placement="top"
+                      effect="light"
+                  >
+                    <el-icon><QuestionFilled /></el-icon>
+                  </el-tooltip>
+                </div>
+              </template>
+
+              <el-select
+                  v-model="form.meta.transitionType"
+                  style="width: 100%"
+                  placeholder="跟随全局"
+                  clearable
+              >
+                <el-option value="fade" label="淡入淡出" />
+                <el-option value="slide" label="滑动" />
+                <el-option value="zoom" label="缩放" />
+                <el-option value="none" label="无动画" />
+              </el-select>
+            </el-form-item>
+          </el-col>
         </el-row>
       </el-form>
       <div>
@@ -423,10 +451,13 @@
   import ComponentsCascader from '@/view/superAdmin/menu/components/components-cascader.vue'
 
   import pathInfo from '@/pathInfo.json'
+  import { useAppStore } from "@/pinia";
 
   defineOptions({
     name: 'Menus'
   })
+
+  const appStore = useAppStore()
 
   const rules = reactive({
     path: [{ required: true, message: '请输入菜单name', trigger: 'blur' }],
